@@ -1,0 +1,85 @@
+<card>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-6">
+        <md-input-container>
+          <input mdInput placeholder="Name" [formControl]="form.controls['Name']">
+          <small *ngIf="form.controls['Name'].hasError('required') && form.controls['Name'].touched" class="form-message text-danger">You must include a name.</small>
+          <small *ngIf="form.controls['Name'].hasError('minlength') && form.controls['Name'].touched" class="form-message text-danger">Your name must be at least 5 characters long.</small>
+          <small *ngIf="form.controls['Name'].hasError('maxlength') && form.controls['Name'].touched" class="form-message text-danger">Your name cannot exceed 10 characters.</small>
+        </md-input-container>
+      </div>
+
+      <div class="col-md-6">
+        <md-select [formControl]="form.controls['Status']" placeholder="Status">
+            <md-option [value]="1">test</md-option>
+        </md-select>
+        <small *ngIf="form.controls['Status'].hasError('required') && form.controls['Status'].touched" class="form-message text-danger">You must select a Status.</small>
+      </div>
+
+
+      <div class="col-md-6">
+        <md-select [formControl]="form.controls['Type']" placeholder="Type">
+            <md-option *ngFor="let projecttype of projecttypes" [value]="projecttype.id">{{ projecttype.Name }}</md-option>
+        </md-select>
+        <small *ngIf="form.controls['Type'].hasError('required') && form.controls['Type'].touched" class="form-message text-danger">You must select a Type.</small>
+      </div>
+
+      <div class="col-md-6">
+        <md-select [formControl]="form.controls['Company']" placeholder="Company">
+            <md-option [value]="1">Glocify</md-option>
+        </md-select>
+        <small *ngIf="form.controls['Company'].hasError('required') && form.controls['Company'].touched" class="form-message text-danger">You must select a Company.</small>
+      </div>
+
+      <div class="col-md-6">
+        <md-select [formControl]="form.controls['Contact']" placeholder="Contact">
+          <md-option *ngFor="let customer of customers" [value]="customer.id">{{ customer.FirstName }} {{ customer.LastName }}</md-option>
+        </md-select>
+        <small *ngIf="form.controls['Contact'].hasError('required') && form.controls['Contact'].touched" class="form-message text-danger">You must select a Contact.</small>
+      </div>
+
+      <div class="col-md-6">
+        <md-input-container>
+          <input mdInput placeholder="Location" [formControl]="form.controls['Location']">
+          <small *ngIf="form.controls['Location'].hasError('required') && form.controls['Location'].touched" class="form-message text-danger">You must include a location.</small>
+        </md-input-container>
+      </div>
+
+      <div class="col-md-6">
+        <md-select [formControl]="form.controls['BuildingType']" placeholder="BuildingType">
+			<md-option *ngFor="let buildingtype of buildingtypes" [value]="buildingtype.id">{{ buildingtype.Name }}</md-option>
+        </md-select>
+        <small *ngIf="form.controls['BuildingType'].hasError('required') && form.controls['BuildingType'].touched" class="form-message text-danger">You must select a BuildingType.</small>
+      </div>
+
+     <div class="col-md-6">
+        <md-input-container>
+          <input mdInput placeholder="SizeInM2" [formControl]="form.controls['SizeInM2']">
+          <small *ngIf="form.controls['SizeInM2'].hasError('required') && form.controls['SizeInM2'].touched" class="form-message text-danger">You must include a SizeInM2.</small>
+        </md-input-container>
+      </div>
+     <div class="col-md-6">
+        <md-input-container>
+          <input mdInput placeholder="Tags" [formControl]="form.controls['Tags']">
+          <small *ngIf="form.controls['Tags'].hasError('required') && form.controls['Tags'].touched" class="form-message text-danger">You must include a Tags.</small>
+        </md-input-container>
+      </div>
+
+     <div class="col-md-6">
+        <md-input-container>
+          <input mdInput placeholder="Roofs" [formControl]="form.controls['Roofs']">
+          <small *ngIf="form.controls['Roofs'].hasError('required') && form.controls['Roofs'].touched" class="form-message text-danger">You must include a Roofs.</small>
+        </md-input-container>
+      </div>
+      <div class="col-md-12">
+          <md-input-container>
+            <textarea mdInput placeholder="Description" [formControl]="form.controls['Description']"></textarea>
+            <small *ngIf="form.controls['Description'].hasError('required') && form.controls['Description'].touched" class="form-message text-danger">You must include Description.</small>
+          </md-input-container>
+      </div>
+    <button md-raised-button color="accent" type="submit" [disabled]="!form.valid">Submit</button>
+	</div>
+  </form>
+  <div class="message">{{result}}</div>
+</card>

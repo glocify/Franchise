@@ -1,0 +1,129 @@
+<card>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-md-6">
+          <md-input-container>
+            <input mdInput placeholder="First Name" [formControl]="form.controls['FirstName']">
+            <small *ngIf="form.controls['FirstName'].hasError('required') && form.controls['FirstName'].touched" class="form-message text-danger">You must include a first name.</small>
+            <small *ngIf="form.controls['FirstName'].hasError('minlength') && form.controls['FirstName'].touched" class="form-message text-danger">Your first name must be at least 5 characters long.</small>
+            <small *ngIf="form.controls['FirstName'].hasError('maxlength') && form.controls['FirstName'].touched" class="form-message text-danger">Your first name cannot exceed 10 characters.</small>
+          </md-input-container>
+        </div>
+
+        <div class="col-md-6">
+          <md-input-container>
+            <input mdInput placeholder="Last Name" [formControl]="form.controls['LastName']">
+            <small *ngIf="form.controls['LastName'].hasError('required') && form.controls['LastName'].touched" class="form-message text-danger">You must include a last name.</small>
+            <small *ngIf="form.controls['LastName'].hasError('minlength') && form.controls['LastName'].touched" class="form-message text-danger">Your first name must be at least 5 characters long.</small>
+            <small *ngIf="form.controls['LastName'].hasError('maxlength') && form.controls['LastName'].touched" class="form-message text-danger">Your first name cannot exceed 10 characters.</small>
+          </md-input-container>
+        </div>
+
+        <div class="col-md-6">
+            <md-input-container>
+              <input mdInput placeholder="Age" [formControl]="form.controls['Age']">
+              <small *ngIf="form.controls['Age'].hasError('required') && form.controls['Age'].touched" class="form-message text-danger">You must include a Age.</small>
+              <small *ngIf="form.controls['Age'].errors?.range && form.controls['Age'].touched" class="form-message text-danger">Age should be between 0 and 999.</small>
+            </md-input-container>
+        </div>
+
+        <div class="col-md-6">
+          <md-input-container>
+            <input mdInput placeholder="Street" [formControl]="form.controls['Street']">
+            <small *ngIf="form.controls['Street'].hasError('required') && form.controls['Street'].touched" class="form-message text-danger">You must include a street.</small>
+          </md-input-container>
+        </div>
+
+        <div class="col-md-6">
+          <md-input-container>
+            <input mdInput placeholder="Building" [formControl]="form.controls['Building']">
+            <small *ngIf="form.controls['Building'].hasError('required') && form.controls['Building'].touched" class="form-message text-danger">You must include a building.</small>
+          </md-input-container>
+        </div>
+
+        <div class="col-md-6">
+            <md-input-container>
+              <input mdInput placeholder="PostalCode" [formControl]="form.controls['PostalCode']">
+              <small *ngIf="form.controls['PostalCode'].hasError('required') && form.controls['PostalCode'].touched" class="form-message text-danger">You must include a PostalCode.</small>
+            </md-input-container>
+        </div>
+
+        <div class="col-md-6">
+            <md-select [formControl]="form.controls['Country']" (change)="setRegion(form.controls['Country'])" placeholder="Country">
+                <md-option *ngFor="let country of countries" [value]="country.id">{{ country.Name }}</md-option>
+            </md-select>
+            <small *ngIf="form.controls['Country'].hasError('required') && form.controls['Country'].touched" class="form-message text-danger">You must select a country.</small>
+          </div>
+
+          <div class="col-md-6">
+            <md-select [formControl]="form.controls['Region']" placeholder="Region">
+              <md-option *ngFor="let region of regions" [value]="region.id">{{ region.Name }}</md-option>
+            </md-select>
+            <small *ngIf="form.controls['Region'].hasError('required') && form.controls['Region'].touched" class="form-message text-danger">You must select a region.</small>
+          </div>
+
+        <div class="col-md-6">
+          <md-input-container>
+            <input mdInput placeholder="City" [formControl]="form.controls['City']">
+            <small *ngIf="form.controls['City'].hasError('required') && form.controls['City'].touched" class="form-message text-danger">You must include a city.</small>
+          </md-input-container>
+        </div>
+
+        <div class="col-md-6">
+          <md-input-container>
+            <input mdInput placeholder="Email" [formControl]="form.controls['Email']">
+            <small *ngIf="form.controls['Email'].hasError('required') && form.controls['Email'].touched" class="form-message text-danger">You must include an email address.</small>
+            <small *ngIf="form.controls['Email'].errors?.Email && form.controls['Email'].touched" class="form-message text-danger">You must include a valid email address.</small>
+          </md-input-container>
+        </div>
+
+        <div class="col-md-6">
+          <md-input-container>
+            <input mdInput placeholder="Phone number (09898989898)" [formControl]="form.controls['Phone']" type="text">
+            <small *ngIf="form.controls['Phone'].hasError('required') && form.controls['Phone'].touched" class="form-message text-danger">You must include phone number.</small>
+            <small *ngIf="form.controls['Phone'].errors?.Phone && form.controls['Phone'].touched" class="form-message text-danger">You must include a valid phone number.</small>
+          </md-input-container>
+        </div>
+
+        <div class="col-md-6">
+          <md-input-container>
+            <input mdInput placeholder="Mobile" [formControl]="form.controls['Mobile']" type="text">
+            <small *ngIf="form.controls['Mobile'].hasError('required') && form.controls['Mobile'].touched" class="form-message text-danger">You must include mobile number.</small>
+          </md-input-container>
+        </div>
+
+        <div class="col-md-6">
+          <md-input-container>
+            <input mdInput placeholder="Contact Type" [formControl]="form.controls['ContactType']">
+            <small *ngIf="form.controls['ContactType'].hasError('required') && form.controls['ContactType'].touched" class="form-message text-danger">You must include a Contact Type.</small>
+          </md-input-container>
+        </div>
+
+        <div class="col-md-6">
+          <md-input-container>
+            <input mdInput placeholder="Billing Information" [formControl]="form.controls['BillingInformation']">
+            <small *ngIf="form.controls['BillingInformation'].hasError('required') && form.controls['BillingInformation'].touched" class="form-message text-danger">You must include Billing Information.</small>
+          </md-input-container>
+        </div>
+
+        <div class="col-md-12">
+            <md-input-container>
+              <textarea mdInput placeholder="Description" [formControl]="form.controls['Description']"></textarea>
+              <small *ngIf="form.controls['Description'].hasError('required') && form.controls['Description'].touched" class="form-message text-danger">You must include Description.</small>
+            </md-input-container>
+        </div>
+
+      </div>
+      <div class="mb-4">
+        <label>Gender</label>
+        <md-radio-group [formControl]="form.controls['Gender']">
+          <md-radio-button value="male">Male</md-radio-button>
+          <md-radio-button value="female">Female</md-radio-button>
+          <small *ngIf="!form.controls['Gender'].valid && form.controls['Gender'].touched" class="form-message text-danger">You must select a gender.</small>
+        </md-radio-group>
+      </div>
+
+      <button md-raised-button color="accent" type="submit" [disabled]="!form.valid">Submit</button>
+    </form>
+    <div class="message">{{result}}</div>
+  </card>

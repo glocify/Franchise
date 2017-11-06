@@ -1,0 +1,23 @@
+<card [title]="'Customer'">
+  <div class="row">
+    <div *ngIf="customer" class="col-md-12">
+		<p><strong>First Name: </strong>{{customer.FirstName}}</p>
+		<p><strong>Last Name: </strong>{{customer.LastName}}</p>
+		<p><strong>Gender: </strong>{{customer.Gender}}</p>
+		<p><strong>Age: </strong>{{customer.Age}}</p>
+		<p><strong>Street: </strong>{{customer.Street}}</p>
+		<p><strong>Building: </strong>{{customer.Building}}</p>
+		<p><strong>PostalCode: </strong>{{customer.PostalCode}}</p>
+		<p><strong>Country: </strong>{{customer.Country}}</p>
+		<p><strong>Region: </strong>{{customer.Region}}</p>
+		<p><strong>City: </strong>{{customer.City}}</p>
+		<p><strong>Email: </strong>{{customer.Email}}</p>
+		<p><strong>Phone: </strong>{{customer.Phone}}</p>
+		<p><strong>Mobile: </strong>{{customer.Mobile}}</p>
+		<p><strong>ContactType: </strong>{{customer.ContactType}}</p>
+		<p><strong>Description: </strong>{{customer.Description}}</p>
+		<p><strong>BillingInformation: </strong>{{customer.BillingInformation}}</p>
+		<p><strong>Created: </strong> {{customer.Created}}</p>
+    </div>
+  </div>
+</card>

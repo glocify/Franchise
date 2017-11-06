@@ -1,0 +1,26 @@
+<ngx-datatable
+  class="material"
+  [headerHeight]="'auto'"
+  [rowHeight]="'auto'"
+  [columnMode]="'force'"
+  [limit]="10"
+  [loadingIndicator]="loadingIndicator"
+  [footerHeight]="50"
+  [rows]="rows">
+  <ngx-datatable-column name="First Name" sortable="true" prop="FirstName">
+    <ng-template let-value="value" ngx-datatable-cell-template>
+      {{value}}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Last Name" sortable="true" prop="LastName">
+    <ng-template let-value="value" ngx-datatable-cell-template>
+      {{value}}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Actions" sortable="false" prop="id">
+    <ng-template let-value="value" ngx-datatable-cell-template>
+      <a md-raised-button color="primary" [routerLink]="['/default-layout/customer/', value, 'edit']" >Edit</a>
+	  <a md-raised-button color="primary" [routerLink]="['/default-layout/customer/', value, 'view']" >View</a>
+    </ng-template>
+  </ngx-datatable-column>
+</ngx-datatable>
